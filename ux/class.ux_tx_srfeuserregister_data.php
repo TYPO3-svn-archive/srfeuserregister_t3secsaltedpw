@@ -24,7 +24,7 @@
 /**
  * ux/class.ux_tx_srfeuserregister_data.php
  *
- * $Id: class.ux_tx_srfeuserregister_data.php 14 2009-02-22 14:10:53Z peter $
+ * $Id$
  *
  * @author Peter Schuster <typo3@peschuster.de>
  */
