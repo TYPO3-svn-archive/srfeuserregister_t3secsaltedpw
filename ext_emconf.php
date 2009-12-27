@@ -1,27 +1,27 @@
 <?php
 
 ########################################################################
-# Extension Manager/Repository config file for ext: "srfeuserregister_t3secsaltedpw"
+# Extension Manager/Repository config file for ext "srfeuserregister_t3secsaltedpw".
 #
-# Auto generated 20-01-2009 15:43
+# Auto generated 27-12-2009 01:19
 #
 # Manual updates:
-# Only the data in the array - anything else is removed by next write.
-# "version" and "dependencies" must not be touched!
+# Only the data in the array - everything else is removed by next
+# writing. "version" and "dependencies" must not be touched!
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Salted Password Hashes for sr_feuser_register',
-	'description' => 'Modifies sr_feuser_register to work together with the extension t3sec_saltedpw. This is done by xclassing tx_srfeuserregister_data and extending the methods parseIncomingData and parseOutgoingData.',
+	'description' => 'Modifies sr_feuser_register to work together with the extension saltedpasswords. This is done by xclassing tx_srfeuserregister_data and extending the methods parseIncomingData and parseOutgoingData.',
 	'category' => 'misc',
 	'author' => 'Peter Schuster',
 	'author_email' => 'typo3@peschuster.de',
 	'shy' => '',
-	'dependencies' => 't3sec_saltedpw,sr_feuser_register',
+	'dependencies' => 'saltedpasswords,sr_feuser_register',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
@@ -29,10 +29,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.1.0',
+	'version' => '0.2.0',
 	'constraints' => array(
 		'depends' => array(
-			't3sec_saltedpw' => '',
+			'typo3' => '4.3.0-0.0.0',
+			'saltedpasswords' => '',
 			'sr_feuser_register' => '',
 		),
 		'conflicts' => array(
@@ -40,7 +41,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:6:{s:9:"ChangeLog";s:4:"122c";s:11:"LICENSE.txt";s:4:"0933";s:12:"ext_icon.gif";s:4:"4324";s:17:"ext_localconf.php";s:4:"f6b4";s:40:"ux/class.ux_tx_srfeuserregister_data.php";s:4:"e301";s:14:"doc/manual.sxw";s:4:"55fb";}',
+	'_md5_values_when_last_written' => 'a:6:{s:9:"ChangeLog";s:4:"faf9";s:11:"LICENSE.txt";s:4:"0933";s:12:"ext_icon.gif";s:4:"4324";s:17:"ext_localconf.php";s:4:"f6b4";s:14:"doc/manual.sxw";s:4:"3aac";s:40:"ux/class.ux_tx_srfeuserregister_data.php";s:4:"dd44";}',
 	'suggests' => array(
 	),
 );

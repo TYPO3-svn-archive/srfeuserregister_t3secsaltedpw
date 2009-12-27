@@ -1,3 +1,9 @@
+2009-12-27 Peter Schuster  <typo3@peschuster.de>
+
+	* rewritten to use saltedpasswords
+	* depends on TYPO3 v4.3.0
+	* released version 0.2.0
+
 2009-01-20 Peter Schuster  <typo3@peschuster.de>
 
 	* initial release to ter

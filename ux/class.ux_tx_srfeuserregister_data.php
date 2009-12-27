@@ -32,8 +32,6 @@
 	// Make sure that we are executed only in TYPO3 context
 if (!defined ("TYPO3_MODE")) die ("Access denied.");
 
-require_once t3lib_extMgm::extPath('t3sec_saltedpw', 'res/lib/class.tx_t3secsaltedpw_phpass.php');
-
 /**
  * This class extends the tx_srfeuserregister_data class so that
  * it works together with t3sec_saltedpw
@@ -54,7 +52,7 @@ class ux_tx_srfeuserregister_data extends tx_srfeuserregister_data {
 	function parseIncomingData($origArray = array()) {
 
 		$parsedArr = parent::parseIncomingData($origArray);
-		if (t3lib_extMgm::isLoaded('t3sec_saltedpw') && tx_t3secsaltedpw_div::isUsageEnabled()) {
+		if (t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
 			$parsedArr['password'] = '';
 		}
 		return $parsedArr;
@@ -74,8 +72,8 @@ class ux_tx_srfeuserregister_data extends tx_srfeuserregister_data {
 
 		$parsedArray = parent::parseOutgoingData($dataArray, $origArray);
 
-		if (t3lib_extMgm::isLoaded('t3sec_saltedpw') && tx_t3secsaltedpw_div::isUsageEnabled()) {
-			$objPHPass = t3lib_div::makeInstance('tx_t3secsaltedpw_phpass');
+		if (t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
+			$objPHPass = t3lib_div::makeInstance(tx_saltedpasswords_div::getDefaultSaltingHashingMethod());
 			$updatedPassword = $objPHPass->getHashedPassword($parsedArray['password']);
 			$parsedArray['password'] = $parsedArray['password_again'] = $updatedPassword;
 		}
