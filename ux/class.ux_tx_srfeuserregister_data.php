@@ -52,7 +52,7 @@ class ux_tx_srfeuserregister_data extends tx_srfeuserregister_data {
 	function parseIncomingData($origArray = array()) {
 
 		$parsedArr = parent::parseIncomingData($origArray);
-		if (t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
+		if (isset($parsedArr['password']) && t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
 			$parsedArr['password'] = '';
 		}
 		return $parsedArr;
@@ -72,7 +72,7 @@ class ux_tx_srfeuserregister_data extends tx_srfeuserregister_data {
 
 		$parsedArray = parent::parseOutgoingData($dataArray, $origArray);
 
-		if (t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
+		if (isset($parsedArray['password']) && t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
 			$objPHPass = t3lib_div::makeInstance(tx_saltedpasswords_div::getDefaultSaltingHashingMethod());
 			$updatedPassword = $objPHPass->getHashedPassword($parsedArray['password']);
 			$parsedArray['password'] = $parsedArray['password_again'] = $updatedPassword;
