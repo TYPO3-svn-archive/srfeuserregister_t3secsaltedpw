@@ -49,9 +49,9 @@ class ux_tx_srfeuserregister_data extends tx_srfeuserregister_data {
 	 * @param	array		$origArray: array with user data from database
 	 * @return	array		parsed array
 	 */
-	function parseIncomingData($origArray = array()) {
+	public function parseIncomingData($origArray = array(), $bUnsetZero = TRUE) {
 
-		$parsedArr = parent::parseIncomingData($origArray);
+		$parsedArr = parent::parseIncomingData($origArray, $bUnsetZero);
 		if (isset($parsedArr['password']) && t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
 			$parsedArr['password'] = '';
 		}
@@ -68,9 +68,9 @@ class ux_tx_srfeuserregister_data extends tx_srfeuserregister_data {
 	 *
 	 * @return	array		parsed array
 	 */
-	function parseOutgoingData(&$dataArray, $origArray) {
+	public function parseOutgoingData ($theTable, $cmdKey, $pid, $conf, $dataArray, $origArray) {
 
-		$parsedArray = parent::parseOutgoingData($dataArray, $origArray);
+		$parsedArray = parent::parseOutgoingData($theTable, $cmdKey, $pid, $conf, $dataArray, $origArray);
 
 		if (isset($parsedArray['password']) && t3lib_extMgm::isLoaded('saltedpasswords') && tx_saltedpasswords_div::isUsageEnabled()) {
 			$objPHPass = t3lib_div::makeInstance(tx_saltedpasswords_div::getDefaultSaltingHashingMethod());
